@@ -23,7 +23,9 @@
     "url": "https://github.com/peggyjs/coverage/issues"
   },
   "scripts": {
+    "build": "peggy --format es test/minimal.peggy && tsc",
     "lint": "eslint .",
+    "pretest": "npm run build",
     "test": "c8 node --test"
   },
   "dependencies": {
