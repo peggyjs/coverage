@@ -6,6 +6,7 @@ export default [
     ignores: [
       "node_modules/**",
       "test/minimal.js",
+      "**/*.ts",
     ],
   },
   js,

@@ -9,8 +9,10 @@ test("test peggy coverage", async() => {
     },
     {
       startRule: "foo",
-      validInput: "foo",
+      validInput: "\nfoo",
+      validResult: "foo",
       invalidInput: "",
+      offset: 1,
     },
     {
       offset: 3,

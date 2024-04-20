@@ -1,19 +1,4 @@
 /**
- * @template T
- * @typedef {object} PeggyTestOptions
- * @prop {string} [startRule]
- * @prop {string} [validInput]
- * @prop {T} [validResult]
- * @prop {string} [invalidInput]
- * @prop {number} [offset = 0]
- */
-/**
- * @typedef {import('peggy').Parser & { StartRules: string[]}} Parser
- */
-/**
- * @typedef {import('peggy').Location} Location
- */
-/**
  * Test the basic functionality of a Peggy grammar, to make coverage easier.
  *
  * @template T

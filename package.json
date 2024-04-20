@@ -25,11 +25,11 @@
   "scripts": {
     "build": "peggy --format es test/minimal.peggy && tsc",
     "lint": "eslint .",
-    "pretest": "npm run build",
     "test": "c8 node --test"
   },
   "dependencies": {
-    "peggy": "4.0.2"
+    "peggy": "4.0.2",
+    "source-map-generator": "0.8.0"
   },
   "devDependencies": {
     "@peggyjs/eslint-config": "3.2.4",
