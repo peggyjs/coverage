@@ -1,0 +1,43 @@
+{
+  "name": "@peggyjs/coverage",
+  "version": "0.0.0",
+  "decription": "Generate better code coverage for Peggy grammars",
+  "main": "index.js",
+  "type": "module",
+  "keywords": [
+    "peggy,",
+    "pegjs,",
+    "coverage,",
+    "test,",
+    "unit,",
+    "edgecase"
+  ],
+  "author": "Joe Hildebrand <joe-github@cursive.net>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peggyjs/coverage.git"
+  },
+  "homepage": "https://github.com/peggyjs/coverage#readme",
+  "bugs": {
+    "url": "https://github.com/peggyjs/coverage/issues"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "test": "c8 node --test"
+  },
+  "dependencies": {
+    "peggy": "4.0.2"
+  },
+  "devDependencies": {
+    "@peggyjs/eslint-config": "3.2.4",
+    "@types/node": "20.12.7",
+    "c8": "9.1.0",
+    "eslint": "8.57.0",
+    "typescript": "5.4.5"
+  },
+  "packageManager": "pnpm@9.0.4+sha512.c374b52de3de88c58fd8333df664a737279cdb0e1344ba4054d3b1fffa9a1a3670854f755dca4f16adea3f14be9896a7fcaf167409fe0c1ad60475271dafe81a",
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,8 @@
+.c8rc
+.editorconfig
+.ncurc
+.vscode/
+coverage/
+eslint.config.js
+test/
+tsconfig.json
