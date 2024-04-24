@@ -12,6 +12,7 @@ export type PeggyTestOptions<T> = {
     validResult?: T | undefined;
     invalidInput?: string | undefined;
     offset?: number | undefined;
+    options?: import("peggy").ParserOptions | undefined;
 };
 export type Parser = import('peggy').Parser & {
     StartRules: string[];

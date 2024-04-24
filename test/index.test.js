@@ -25,5 +25,11 @@ test("test peggy coverage", async() => {
       validResult: "foa",
       offset: 1,
     },
+    {
+      invalidInput: "ccc",
+      options: {
+        peg$silentFails: -1,
+      },
+    },
   ]);
 });
