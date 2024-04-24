@@ -1,5 +1,6 @@
 .c8rc
 .editorconfig
+.github/
 .ncurc
 .vscode/
 coverage/
