@@ -12,18 +12,18 @@ test("test peggy coverage", async() => {
       validInput: "\nfoo",
       validResult: "foo",
       invalidInput: "",
-      offset: 1,
+      peg$maxFailPos: 1,
     },
     {
-      offset: 3,
       validInput: "   foo",
       validResult: "foo",
       invalidInput: " fo",
+      peg$maxFailPos: 3,
     },
     {
       validInput: "afoa",
       validResult: "foa",
-      offset: 1,
+      peg$maxFailPos: 1,
     },
     {
       invalidInput: "ccc",
