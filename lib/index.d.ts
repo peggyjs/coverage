@@ -29,7 +29,7 @@ export type PeggyTestOptions<T> = {
      * What result should startRule return for validInput?
      * Default: validInput.
      */
-    validResult?: T | undefined;
+    validResult?: T | ((res: T) => any) | undefined;
     /**
      * If specified, ensure that the grammar fails
      * on this input.

@@ -1,6 +1,6 @@
 {
   "name": "@peggyjs/coverage",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "decription": "Generate better code coverage for Peggy grammars",
   "main": "lib/index.js",
   "type": "module",
@@ -33,12 +33,12 @@
   },
   "devDependencies": {
     "@peggyjs/eslint-config": "3.2.4",
-    "@types/node": "20.12.7",
+    "@types/node": "20.12.10",
     "c8": "9.1.0",
     "eslint": "8.57.0",
     "typescript": "5.4.5"
   },
-  "packageManager": "pnpm@9.0.6",
+  "packageManager": "pnpm@9.1.0",
   "engines": {
     "node": ">=18"
   }
