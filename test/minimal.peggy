@@ -3,7 +3,7 @@ foo
   = (ws / init)* @$("fo" .)
 
 init
-  = [a-b\x7f]
+  = [a-b\x7f]+
 
 ws "whitespace"
   =  [ \t\r\n]

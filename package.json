@@ -1,6 +1,6 @@
 {
   "name": "@peggyjs/coverage",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "decription": "Generate better code coverage for Peggy grammars",
   "main": "lib/index.js",
   "type": "module",
@@ -25,7 +25,7 @@
   "scripts": {
     "build": "peggy --format es test/minimal.peggy && tsc",
     "lint": "eslint .",
-    "test": "c8 node --test"
+    "test": "c8 node --test test/*.test.js"
   },
   "dependencies": {
     "peggy": "4.0.2",
