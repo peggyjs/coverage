@@ -1,12 +1,26 @@
 /**
+ * @typedef {object} TestPeggyOptions
+ * @prop {boolean} [noDelete] Do not delete the generated file.
+ * @prop {boolean} [noMap] Do not add a sourcemap to the generated file.
+ *   Defaults to true if peggy$debugger is set on any start, otherwise false.
+ * @prop {boolean} [noGenerate] Do not generate a file, only run tests on the
+ *   original.
+ */
+/**
  * Test the basic functionality of a Peggy grammar, to make coverage easier.
  *
  * @template T
  * @param {URL | string} grammarUrl The file name for the compiled grammar.
  * @param {PeggyTestOptions<T>[]} starts List of tests.  Ensure you have at
  *   least one validInput and at least one invalidInput.
+ * @param {TestPeggyOptions} [opts] Options for processing.
+ * @returns {Promise<TestCounts>}
  */
-export function testPeggy<T>(grammarUrl: URL | string, starts: PeggyTestOptions<T>[]): Promise<void>;
+export function testPeggy<T>(grammarUrl: URL | string, starts: PeggyTestOptions<T>[], opts?: TestPeggyOptions | undefined): Promise<TestCounts>;
+export type TestCounts = {
+    valid: number;
+    invalid: number;
+};
 export type ExtraParserOptions = {
     /**
      * In the augmented code only, use this
@@ -57,3 +71,19 @@ export type Parser = import('peggy').Parser & {
     StartRules: string[];
 };
 export type Location = import('peggy').Location;
+export type TestPeggyOptions = {
+    /**
+     * Do not delete the generated file.
+     */
+    noDelete?: boolean | undefined;
+    /**
+     * Do not add a sourcemap to the generated file.
+     * Defaults to true if peggy$debugger is set on any start, otherwise false.
+     */
+    noMap?: boolean | undefined;
+    /**
+     * Do not generate a file, only run tests on the
+     * original.
+     */
+    noGenerate?: boolean | undefined;
+};

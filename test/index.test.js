@@ -1,8 +1,9 @@
+import { deepEqual, rejects } from "node:assert";
 import test from "node:test";
 import { testPeggy } from "../lib/index.js";
 
 test("test peggy coverage", async() => {
-  await testPeggy(new URL("minimal.js", import.meta.url), [
+  const counts = await testPeggy(new URL("minimal.js", import.meta.url), [
     {
       validInput: "foo",
       invalidInput: "",
@@ -31,5 +32,63 @@ test("test peggy coverage", async() => {
         peg$silentFails: -1,
       },
     },
+    {
+      validInput: "a",
+      validResult(r) {
+        return r;
+      },
+      peg$maxFailPos: 1,
+      options: {
+        peg$startRuleFunction: "peg$parseinit",
+      },
+    },
+    {
+      validInput: "aa",
+      validResult: ["a", "a"],
+      peg$maxFailPos: 2,
+      options: {
+        peg$startRuleFunction: "peg$parseinit",
+      },
+    },
   ]);
+  deepEqual(counts, {
+    valid: 10,
+    invalid: 8,
+  });
+});
+
+test("noGenerate", async() => {
+  const counts = await testPeggy(new URL("minimal.js", import.meta.url), [
+    {
+      validInput: "foo",
+      invalidInput: "",
+    },
+  ], {
+    noGenerate: true,
+  });
+
+  deepEqual(counts, {
+    valid: 1,
+    invalid: 1,
+  });
+});
+
+test("noMap", async() => {
+  const counts = await testPeggy(new URL("minimal.js", import.meta.url), [
+    {
+      validInput: "foo",
+      invalidInput: "",
+    },
+  ], {
+    noMap: true,
+  });
+
+  deepEqual(counts, {
+    valid: 2,
+    invalid: 2,
+  });
+});
+
+test("edges", async() => {
+  await rejects(() => testPeggy(), TypeError);
 });

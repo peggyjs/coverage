@@ -4,7 +4,6 @@
     "lcov"
   ],
   "exclude": [
-    "**/test/*.test.js",
-    "**/node_modules/**"
+    "test/*.test.js"
   ]
 }

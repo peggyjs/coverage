@@ -25,7 +25,7 @@
   "scripts": {
     "build": "peggy --format es test/minimal.peggy && tsc",
     "lint": "eslint .",
-    "test": "c8 node --test"
+    "test": "c8 node --test test/*.test.js"
   },
   "dependencies": {
     "peggy": "4.0.2",
