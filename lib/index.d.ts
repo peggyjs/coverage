@@ -5,6 +5,8 @@
  *   Defaults to true if peggy$debugger is set on any start, otherwise false.
  * @prop {boolean} [noGenerate] Do not generate a file, only run tests on the
  *   original.
+ * @prop {boolean} [noOriginal] Do not run tests on the original code, only
+ *   on the generated code.
  */
 /**
  * Test the basic functionality of a Peggy grammar, to make coverage easier.
@@ -20,6 +22,8 @@ export function testPeggy<T>(grammarUrl: URL | string, starts: PeggyTestOptions<
 export type TestCounts = {
     valid: number;
     invalid: number;
+    grammarPath: string;
+    modifiedPath: string;
 };
 export type ExtraParserOptions = {
     /**
@@ -86,4 +90,9 @@ export type TestPeggyOptions = {
      * original.
      */
     noGenerate?: boolean | undefined;
+    /**
+     * Do not run tests on the original code, only
+     * on the generated code.
+     */
+    noOriginal?: boolean | undefined;
 };
