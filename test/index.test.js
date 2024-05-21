@@ -1,6 +1,13 @@
-import { deepEqual, rejects } from "node:assert";
+import { deepEqual, equal, rejects } from "node:assert";
 import test from "node:test";
 import { testPeggy } from "../lib/index.js";
+
+function cleanCounts(counts) {
+  equal(typeof counts.grammarPath, "string");
+  delete counts.grammarPath;
+  equal(typeof counts.modifiedPath, "string");
+  delete counts.modifiedPath;
+}
 
 test("test peggy coverage", async() => {
   const counts = await testPeggy(new URL("minimal.js", import.meta.url), [
@@ -51,6 +58,8 @@ test("test peggy coverage", async() => {
       },
     },
   ]);
+
+  cleanCounts(counts);
   deepEqual(counts, {
     valid: 10,
     invalid: 8,
@@ -67,6 +76,7 @@ test("noGenerate", async() => {
     noGenerate: true,
   });
 
+  cleanCounts(counts);
   deepEqual(counts, {
     valid: 1,
     invalid: 1,
@@ -83,6 +93,7 @@ test("noMap", async() => {
     noMap: true,
   });
 
+  cleanCounts(counts);
   deepEqual(counts, {
     valid: 2,
     invalid: 2,
