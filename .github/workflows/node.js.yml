@@ -6,13 +6,17 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  workflow_call:
+    secrets:
+      CODECOV_TOKEN:
+        required: true
 
 jobs:
   build:
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 21.x, 22.x]
+        node-version: [18.x, 20.x, 21.x, 22.x, 23.x]
         platform: [ubuntu-latest]
 
     runs-on: ${{ matrix.platform }}

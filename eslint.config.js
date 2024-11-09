@@ -1,5 +1,5 @@
-import js from "@peggyjs/eslint-config/flat/module.js";
-import modern from "@peggyjs/eslint-config/flat/modern.js";
+import js from "@peggyjs/eslint-config/module.js";
+import modern from "@peggyjs/eslint-config/modern.js";
 
 export default [
   {
@@ -9,6 +9,6 @@ export default [
       "**/*.ts",
     ],
   },
-  js,
-  modern,
+  ...js,
+  ...modern,
 ];

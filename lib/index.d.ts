@@ -71,10 +71,10 @@ export type PeggyTestOptions<T> = {
 /**
  * See https://github.com/peggyjs/peggy/issues/512
  */
-export type Parser = import('peggy').Parser & {
+export type Parser = import("peggy").Parser & {
     StartRules: string[];
 };
-export type Location = import('peggy').Location;
+export type Location = import("peggy").Location;
 export type TestPeggyOptions = {
     /**
      * Do not delete the generated file.

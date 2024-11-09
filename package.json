@@ -1,6 +1,6 @@
 {
   "name": "@peggyjs/coverage",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "decription": "Generate better code coverage for Peggy grammars",
   "main": "lib/index.js",
   "type": "module",
@@ -28,17 +28,23 @@
     "test": "c8 node --test test/*.test.js"
   },
   "dependencies": {
-    "peggy": "4.0.2",
+    "peggy": "4.1.1",
     "source-map-generator": "0.8.0"
   },
   "devDependencies": {
-    "@peggyjs/eslint-config": "3.2.4",
-    "@types/node": "20.12.10",
-    "c8": "9.1.0",
-    "eslint": "8.57.0",
-    "typescript": "5.4.5"
+    "@peggyjs/eslint-config": "5.0.1",
+    "@types/node": "22.9.0",
+    "c8": "10.1.2",
+    "eslint": "9.14.0",
+    "typescript": "5.6.3"
   },
-  "packageManager": "pnpm@9.1.0",
+  "packageManager": "pnpm@9.12.3",
+  "pnpm": {
+    "overrides": {
+      "braces": "^3.0.3",
+      "micromatch": "^4.0.8"
+    }
+  },
   "engines": {
     "node": ">=18"
   }
