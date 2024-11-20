@@ -17,6 +17,8 @@ npm install --dev @peggyjs/coverage
 
 ## API
 
+Full [documentation](https://peggyjs.github.io/coverage/) is available.
+
 Pass in the `file:` URL for the JavaScript output from Peggy:
 
 ```js
