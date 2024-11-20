@@ -24,6 +24,7 @@ jobs:
       - run: pnpm i -r
       - run: npm run build
       - run: npm run test
+      - run: npm run docs
       - run: npm pkg delete devDependencies scripts packageManager
       - name: Deploy Docs
         uses: peaceiris/actions-gh-pages@v4

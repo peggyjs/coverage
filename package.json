@@ -24,6 +24,7 @@
   },
   "scripts": {
     "build": "peggy --format es test/minimal.peggy && tsc",
+    "docs": "typedoc",
     "lint": "eslint .",
     "test": "c8 node --test test/*.test.js"
   },
