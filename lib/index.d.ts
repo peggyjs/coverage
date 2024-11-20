@@ -2,7 +2,7 @@
  * @typedef {object} TestPeggyOptions
  * @prop {boolean} [noDelete] Do not delete the generated file.
  * @prop {boolean} [noMap] Do not add a sourcemap to the generated file.
- *   Defaults to true if peggy$debugger is set on any start, otherwise false.
+ *   Defaults to true if peg$debugger is set on any start, otherwise false.
  * @prop {boolean} [noGenerate] Do not generate a file, only run tests on the
  *   original.
  * @prop {boolean} [noOriginal] Do not run tests on the original code, only
@@ -32,6 +32,14 @@ export type ExtraParserOptions = {
      * to functions that are NOT valid start rules for internal testing.
      */
     peg$startRuleFunction?: string | undefined;
+    /**
+     * Number of times for each of the
+     * given rules to succeed before they fail.  Only applies in the augmented
+     * code.
+     */
+    peg$failAfter?: {
+        [ruleName: string]: number;
+    } | undefined;
 };
 export type PeggyTestOptions<T> = {
     /**
@@ -63,6 +71,15 @@ export type PeggyTestOptions<T> = {
      */
     invalid?: string | undefined;
     /**
+     * If any test has this set to true, only run the
+     * tests with this set to true.
+     */
+    only?: boolean | undefined;
+    /**
+     * If true, skip this test.
+     */
+    skip?: boolean | undefined;
+    /**
      * Extra options to pass to parse(), overriding whatever else this library
      * would have otherwise used.
      */
@@ -82,7 +99,7 @@ export type TestPeggyOptions = {
     noDelete?: boolean | undefined;
     /**
      * Do not add a sourcemap to the generated file.
-     * Defaults to true if peggy$debugger is set on any start, otherwise false.
+     * Defaults to true if peg$debugger is set on any start, otherwise false.
      */
     noMap?: boolean | undefined;
     /**
