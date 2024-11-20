@@ -4,6 +4,8 @@
 .ncurc
 .vscode/
 coverage/
+docs/
 eslint.config.js
 test/
 tsconfig.json
+typedoc.config.js
