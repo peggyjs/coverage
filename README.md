@@ -38,8 +38,7 @@ Each test definition has the following type:
 ```ts
 export type PeggyTestOptions<T> = {
     /**
-     * Which valid start rule to use?  Default: grammar
-     * default start rule.
+     * Which valid start rule to use?  Default: grammar default start rule.
      */
     startRule?: string | undefined;
     /**
@@ -47,13 +46,12 @@ export type PeggyTestOptions<T> = {
      */
     validInput?: string | undefined;
     /**
-     * What result should startRule return for validInput?
-     * Default: validInput.
+     * What result should startRule return for validInput? Default:
+     * validInput.
      */
-    validResult?: T | undefined;
+    validResult?: T | ((res: T) => any) | undefined;
     /**
-     * If specified, ensure that the grammar fails
-     * on this input.
+     * If specified, ensure that the grammar fails on this input.
      */
     invalidInput?: string | undefined;
     /**
@@ -61,15 +59,40 @@ export type PeggyTestOptions<T> = {
      */
     peg$maxFailPos?: number | undefined;
     /**
-     * What to append to validInput to make it
-     * invalid, so that library mode will return a prefix match.
+     * What to append to validInput to make it invalid, so that library mode
+     * will return a prefix match.
      */
     invalid?: string | undefined;
+    /**
+     * If any test has this set to true, only run the tests with this set to
+     * true.
+     */
+    only?: boolean | undefined;
+    /**
+     * If true, skip this test.
+     */
+    skip?: boolean | undefined;
     /**
      * Extra options to pass to parse(), overriding whatever else this library
      * would have otherwise used.
      */
     options?: (import("peggy").ParserOptions & ExtraParserOptions) | undefined;
+};
+
+export type ExtraParserOptions = {
+    /**
+     * In the augmented code only, use this function as the start rule rather
+     * than the default.  This gives access to functions that are NOT valid
+     * start rules for internal testing.
+     */
+    peg$startRuleFunction?: string | undefined;
+    /**
+     * Number of times for each of the given rules to succeed before they
+     * fail.  Only applies in the augmented code.
+     */
+    peg$failAfter?: {
+        [ruleName: string]: number;
+    } | undefined;
 };
 ```
 

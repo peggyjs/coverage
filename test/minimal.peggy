@@ -7,3 +7,6 @@ init
 
 ws "whitespace"
   =  [ \t\r\n]
+
+not_lib
+  = !{ return options.peg$library }
