@@ -186,3 +186,19 @@ test("thows errors", async() => {
     },
   ]));
 });
+
+test("peg$debugger", async() => {
+  const old = console.error;
+  const stderr = [];
+  console.error = (...args) => stderr.push(args);
+  await testPeggy(MIN, [
+    {
+      validInput: "foo",
+      options: {
+        peg$debugger: true,
+      },
+    },
+  ]);
+  console.error = old;
+  deepEqual(stderr, [["WARNING: sourcemap disabled due to peg$debugger"]]);
+});
