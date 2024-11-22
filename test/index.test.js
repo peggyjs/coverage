@@ -84,6 +84,7 @@ test("test peggy coverage", async() => {
   deepEqual(counts, {
     valid: 11,
     invalid: 9,
+    total: 20,
   });
 });
 
@@ -101,6 +102,7 @@ test("noGenerate", async() => {
   deepEqual(counts, {
     valid: 1,
     invalid: 1,
+    total: 2,
   });
 });
 
@@ -118,6 +120,7 @@ test("noMap", async() => {
   deepEqual(counts, {
     valid: 2,
     invalid: 2,
+    total: 4,
   });
 });
 
@@ -140,6 +143,7 @@ test("skip", async() => {
   deepEqual(counts, {
     valid: 2,
     invalid: 0,
+    total: 2,
   });
 });
 
@@ -158,6 +162,7 @@ test("skip", async() => {
   deepEqual(counts, {
     valid: 2,
     invalid: 0,
+    total: 2,
   });
 });
 
