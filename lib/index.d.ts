@@ -18,10 +18,11 @@
  * @param {TestPeggyOptions} [opts] Options for processing.
  * @returns {Promise<TestCounts>}
  */
-export function testPeggy<T>(grammarUrl: URL | string, starts: PeggyTestOptions<T>[], opts?: TestPeggyOptions | undefined): Promise<TestCounts>;
+export function testPeggy<T>(grammarUrl: URL | string, starts: PeggyTestOptions<T>[], opts?: TestPeggyOptions): Promise<TestCounts>;
 export type TestCounts = {
     valid: number;
     invalid: number;
+    total: number;
     grammarPath: string;
     modifiedPath: string;
 };

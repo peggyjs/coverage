@@ -171,7 +171,7 @@ test("thows errors", async() => {
     {
       validInput: "",
     },
-  ]));
+  ]), SyntaxError);
 
   await rejects(() => testPeggy(MIN, [
     {
