@@ -1,8 +1,17 @@
 import { deepEqual, equal, rejects } from "node:assert";
+import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { SourceNode } from "source-map";
+import { join } from "node:path";
 import test from "node:test";
 import { testPeggy } from "../lib/index.js";
+import { tmpdir } from "node:os";
 
 const MIN = new URL("minimal.js", import.meta.url);
+const tmp = await mkdtemp(join(tmpdir(), "peggyjs-coverage-"));
+
+test.after(async() => {
+  await rm(tmp, { recursive: true });
+});
 
 function cleanCounts(counts) {
   equal(typeof counts.grammarPath, "string");
@@ -206,4 +215,56 @@ test("peg$debugger", async() => {
   ]);
   console.error = old;
   deepEqual(stderr, [["WARNING: sourcemap disabled due to peg$debugger"]]);
+});
+
+test("inputSourceMap", async() => {
+  // MIN doesn't have sourcemap
+  await testPeggy(MIN, [
+    {
+      validInput: "foo",
+    },
+  ], {
+    inputSourceMap: true,
+  });
+
+  const tmpMin = join(tmp, "minimal.js");
+  const src = new SourceNode();
+  const tmpTxt = await readFile(MIN, "utf8");
+  let lineNum = 1;
+  for (const line of tmpTxt.split(/(?<=\n)/)) {
+    const sn = new SourceNode(lineNum++, 0, MIN, line);
+    src.add(sn);
+  }
+  const withMap = src.toStringWithSourceMap();
+  const map = Buffer.from(withMap.map.toString()).toString("base64");
+  const { code } = withMap;
+  const START = "//#";
+  const codeWithDataMap = code + `
+${START} sourceMappingURL=data:application/json;charset=utf-8;base64,${map}
+`;
+  await writeFile(tmpMin, codeWithDataMap);
+
+  // With data: URL
+  await testPeggy(tmpMin, [
+    {
+      validInput: "foo",
+    },
+  ], {
+    inputSourceMap: true,
+  });
+
+  // With file reference
+  const codeWithFileMap = code + `
+${START} sourceMappingURL=minimal.js.map
+`;
+  await writeFile(tmpMin, codeWithFileMap);
+  const tmpMinMap = join(tmp, "minimal.js.map");
+  await writeFile(tmpMinMap, withMap.map.toString());
+  await testPeggy(tmpMin, [
+    {
+      validInput: "foo",
+    },
+  ], {
+    inputSourceMap: true,
+  });
 });
