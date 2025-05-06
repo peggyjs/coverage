@@ -1,6 +1,6 @@
 {
   "name": "@peggyjs/coverage",
-  "version": "1.3.3",
+  "version": "2.0.0",
   "decription": "Generate better code coverage for Peggy grammars",
   "main": "lib/index.js",
   "type": "module",
