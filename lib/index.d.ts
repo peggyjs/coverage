@@ -7,6 +7,8 @@
  *   original.
  * @prop {boolean} [noOriginal] Do not run tests on the original code, only
  *   on the generated code.
+ * @prop {boolean} [inputSourceMap] Read sourceMap information from the input
+ *   file.  Use it to filter the generated sourceMap information.
  */
 /**
  * Test the basic functionality of a Peggy grammar, to make coverage easier.
@@ -113,4 +115,9 @@ export type TestPeggyOptions = {
      * on the generated code.
      */
     noOriginal?: boolean | undefined;
+    /**
+     * Read sourceMap information from the input
+     * file.  Use it to filter the generated sourceMap information.
+     */
+    inputSourceMap?: boolean | undefined;
 };
