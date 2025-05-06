@@ -100,7 +100,7 @@ export type ExtraParserOptions = {
 
 ## Runtime support
 
-Only tested on nodejs 18, 20, 22, and 23.  Only tested in es6 mode.
+Only tested on NodeJS 20, 22, and 23.  Only tested in es6 mode.
 
 ---
 [![Tests](https://github.com/peggyjs/coverage/actions/workflows/node.js.yml/badge.svg)](https://github.com/peggyjs/coverage/actions/workflows/node.js.yml)
