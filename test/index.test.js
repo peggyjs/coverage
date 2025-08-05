@@ -9,7 +9,7 @@ import { tmpdir } from "node:os";
 const MIN = new URL("minimal.js", import.meta.url);
 const tmp = await mkdtemp(join(tmpdir(), "peggyjs-coverage-"));
 
-test.after(async() => {
+test.after(async () => {
   await rm(tmp, { recursive: true });
 });
 
@@ -20,7 +20,7 @@ function cleanCounts(counts) {
   delete counts.modifiedPath;
 }
 
-test("test peggy coverage", async() => {
+test("test peggy coverage", async () => {
   const counts = await testPeggy(MIN, [
     {
       validInput: "foo",
@@ -97,7 +97,7 @@ test("test peggy coverage", async() => {
   });
 });
 
-test("noGenerate", async() => {
+test("noGenerate", async () => {
   const counts = await testPeggy(MIN, [
     {
       validInput: "foo",
@@ -115,7 +115,7 @@ test("noGenerate", async() => {
   });
 });
 
-test("noMap", async() => {
+test("noMap", async () => {
   const counts = await testPeggy(MIN, [
     {
       validInput: "foo",
@@ -133,11 +133,11 @@ test("noMap", async() => {
   });
 });
 
-test("edges", async() => {
+test("edges", async () => {
   await rejects(() => testPeggy(), TypeError);
 });
 
-test("skip", async() => {
+test("skip", async () => {
   const counts = await testPeggy(MIN, [
     {
       validInput: "foo",
@@ -156,7 +156,7 @@ test("skip", async() => {
   });
 });
 
-test("skip", async() => {
+test("skip", async () => {
   const counts = await testPeggy(MIN, [
     {
       validInput: "foo",
@@ -175,7 +175,7 @@ test("skip", async() => {
   });
 });
 
-test("thows errors", async() => {
+test("thows errors", async () => {
   await rejects(() => testPeggy(MIN, [
     {
       validInput: "",
@@ -201,7 +201,7 @@ test("thows errors", async() => {
   ]));
 });
 
-test("peg$debugger", async() => {
+test("peg$debugger", async () => {
   const old = console.error;
   const stderr = [];
   console.error = (...args) => stderr.push(args);
@@ -217,7 +217,7 @@ test("peg$debugger", async() => {
   deepEqual(stderr, [["WARNING: sourcemap disabled due to peg$debugger"]]);
 });
 
-test("inputSourceMap", async() => {
+test("inputSourceMap", async () => {
   // MIN doesn't have sourcemap
   await testPeggy(MIN, [
     {
