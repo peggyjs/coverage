@@ -33,25 +33,19 @@
     "ci": "npm run build && npm run lint && npm run docs && npm run test"
   },
   "dependencies": {
-    "peggy": "~5.1.0",
-    "source-map": "~0.7.6"
+    "peggy": "~5.1.1",
+    "source-map": "~0.8.0"
   },
   "devDependencies": {
-    "@peggyjs/eslint-config": "^6.0.13",
-    "@types/node": "^25.5.0",
-    "eslint": "^10.0.3",
-    "superc8": "~12.3.1",
-    "typedoc": "^0.28.17",
-    "typescript": "^5.9.3"
+    "@peggyjs/eslint-config": "^6.0.16",
+    "@types/node": "^26.6.5",
+    "@typescript/native": "npm:typescript@^7.0.2",
+    "eslint": "^10.12.0",
+    "superc8": "~12.7.0",
+    "typedoc": "^0.28.20",
+    "typescript": "npm:@typescript/typescript6@^6.0.2"
   },
-  "packageManager": "pnpm@10.32.1",
-  "pnpm": {
-    "overrides": {
-      "typedoc@0.28.17>markdown-it": "14.1.1",
-      "typedoc@0.28.17>minimatch": "9.0.9",
-      "c8@11.0.0>yargs": "18.0.0"
-    }
-  },
+  "packageManager": "pnpm@12.13.0",
   "engines": {
     "node": ">=20"
   }
